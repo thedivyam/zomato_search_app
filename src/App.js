@@ -1,5 +1,5 @@
 import React from "react";
-import "react-toastify/scss/main.scss";
+import "../src/assets/react-toastify/scss/main.scss";
 import HomePage from "./pages/Homepage";
 import { ToastContainer } from "react-toastify";
 import "./assets/css/App.css";
