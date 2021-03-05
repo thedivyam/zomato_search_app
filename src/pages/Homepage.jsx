@@ -12,12 +12,18 @@ const HomePage = () => {
   const [locations, setLocations] = useState([]);
 
   const getLocations = async () => {
-    if (location === "") toast.error("Search cannot be blank!");
+    if (location === "")
+      toast.error("Search cannot be blank!", {
+        autoClose: 2000,
+      });
 
     const locations = await getAllLocations(location);
     setLocations(locations);
 
-    if (!locations?.length) toast.error("No Locations found with this name");
+    if (!locations?.length)
+      toast.error("No Locations found with this name", {
+        autoClose: 2000,
+      });
   };
 
   const locationChange = (e) => {
