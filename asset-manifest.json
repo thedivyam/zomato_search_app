@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/zomato_search_app/static/css/main.00443a6d.chunk.css",
+    "main.js": "/zomato_search_app/static/js/main.b3db83dc.chunk.js",
+    "main.js.map": "/zomato_search_app/static/js/main.b3db83dc.chunk.js.map",
+    "runtime-main.js": "/zomato_search_app/static/js/runtime-main.ad8ef66e.js",
+    "runtime-main.js.map": "/zomato_search_app/static/js/runtime-main.ad8ef66e.js.map",
+    "static/js/2.475f631f.chunk.js": "/zomato_search_app/static/js/2.475f631f.chunk.js",
+    "static/js/2.475f631f.chunk.js.map": "/zomato_search_app/static/js/2.475f631f.chunk.js.map",
+    "index.html": "/zomato_search_app/index.html",
+    "static/css/main.00443a6d.chunk.css.map": "/zomato_search_app/static/css/main.00443a6d.chunk.css.map",
+    "static/js/2.475f631f.chunk.js.LICENSE.txt": "/zomato_search_app/static/js/2.475f631f.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/zomato_search_app/static/media/main-background.08c93320.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ad8ef66e.js",
+    "static/js/2.475f631f.chunk.js",
+    "static/css/main.00443a6d.chunk.css",
+    "static/js/main.b3db83dc.chunk.js"
+  ]
+}
