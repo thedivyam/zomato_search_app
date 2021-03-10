@@ -1,3 +1,4 @@
+// Imporing the necessary dependencies
 import React from "react";
 import "../src/assets/react-toastify/scss/main.scss";
 import HomePage from "./pages/Homepage";
@@ -8,6 +9,7 @@ import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import RestaurantSearch from "./pages/RestaurantSearch";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 
+// Custom Styles
 const useStyles = makeStyles((theme) =>
   createStyles({
     navBar: {
@@ -21,7 +23,9 @@ const useStyles = makeStyles((theme) =>
 );
 
 function App() {
+  // Initialising the custom styles
   const classes = useStyles();
+  // View
   return (
     <div>
       <BrowserRouter>
