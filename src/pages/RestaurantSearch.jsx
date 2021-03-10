@@ -326,6 +326,7 @@ const RestaurantSearch = () => {
           <Box className={classes.ml}>
             <ListRestaurant restaurants={restaurants} />
           </Box>
+          {/* Button to load more restaurants */}
           <Box px={"2rem"} pb={"2rem"} display="flex" justifyContent="center">
             <Button
               onClick={() => {

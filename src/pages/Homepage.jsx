@@ -1,3 +1,4 @@
+// Imporing the necessary dependencies
 import React, { useState } from "react";
 import { getAllLocations } from "../service/locationService";
 import Locations from "../components/Location";
@@ -8,9 +9,12 @@ import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 
 const HomePage = () => {
+  // Declaring and initialising the state variables
   const [location, setLocation] = useState("New Delhi");
   const [locations, setLocations] = useState([]);
 
+  // Function which searches the location using
+  // getAllLocations() function from locationService.js
   const getLocations = async () => {
     if (location === "")
       toast.error("Search cannot be blank!", {
@@ -26,16 +30,19 @@ const HomePage = () => {
       });
   };
 
+  // Handling the location text change
   const locationChange = (e) => {
     const { value } = e.target;
     setLocation(value);
   };
 
+  // Handling the search button click
   const formHandler = (e) => {
     e.preventDefault();
     getLocations();
   };
 
+  // Creating a custom theme
   const theme = createMuiTheme({
     palette: {
       primary: {
@@ -46,13 +53,13 @@ const HomePage = () => {
       },
     },
     typography: {
-      // Tell Material-UI what's the font-size on the html element is.
       body1: {
         fontSize: 18,
       },
     },
   });
 
+  // View
   return (
     <div>
       <Box

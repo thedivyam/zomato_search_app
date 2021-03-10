@@ -1,3 +1,4 @@
+// Imporing the necessary dependencies
 import React from "react";
 import {
   withStyles,
@@ -19,6 +20,7 @@ const Locations = ({ locations }) => {
     history.push(`/location/${id}`);
   };
 
+  // Table Cell Designs
   const StyledTableCell = withStyles((theme) => ({
     head: {
       backgroundColor: "#2D2D2D",
@@ -32,6 +34,7 @@ const Locations = ({ locations }) => {
     },
   }))(TableCell);
 
+  // Table Row Designs
   const StyledTableRow = withStyles((theme) => ({
     root: {
       "&:nth-of-type(odd)": {
@@ -43,6 +46,7 @@ const Locations = ({ locations }) => {
     },
   }))(TableRow);
 
+  // Table View
   return (
     <Box width={"100%"}>
       <TableContainer component={Paper}>

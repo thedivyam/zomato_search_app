@@ -1,3 +1,4 @@
+// Imporing the necessary dependencies
 import React from "react";
 import {
   Card,
@@ -9,6 +10,7 @@ import {
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import placeHolder from "../assets/img/default-placeholder.png";
 
+// Custom Themes
 const useStyles = makeStyles((theme) =>
   createStyles({
     restaurantCard: {
@@ -36,6 +38,7 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
+// Using Matrial-UI Grid to display the restaurants
 const ListRestaurant = ({ restaurants }) => {
   const classes = useStyles();
   return (

@@ -29,6 +29,8 @@ export const getAllCuisines = async (locationId) => {
   }
 };
 
+// Function to make an API call using Axios to search for the
+// restaurants using category, query and cuisine as parameters
 export const getAllRestaurants = async ({
   locationId,
   categoryId,
