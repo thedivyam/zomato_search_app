@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Card,
   CardActionArea,
@@ -7,7 +7,6 @@ import {
   Grid,
 } from "@material-ui/core";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
-import { getRestaurant } from "../service/restaurantService";
 import placeHolder from "../assets/img/default-placeholder.png";
 
 const useStyles = makeStyles((theme) =>
@@ -38,19 +37,11 @@ const useStyles = makeStyles((theme) =>
 );
 
 const ListRestaurant = ({ restaurants }) => {
-  const [setRestaurant] = useState();
   const classes = useStyles();
-
-  // eslint-disable-next-line no-unused-vars
-  const getRestaurantDetails = async (restaurantId) => {
-    const restaurant = await getRestaurant(restaurantId);
-
-    setRestaurant(restaurant);
-  };
   return (
     <div style={{ width: "100%" }} className={classes.mr}>
-      <Grid container justify="space-between">
-        {restaurants?.map((data) => {
+      <Grid container>
+        {restaurants.map((data) => {
           const restaurant = data.restaurant;
           return (
             <Grid

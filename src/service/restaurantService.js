@@ -1,6 +1,10 @@
+// Importing axios to call the ZomatoAPI
 import Axios from "../util/zomato_api";
+// Import Toastify
 import { toast } from "react-toastify";
 
+// This function will call the ZomatoAPI and
+// fetch all the categories and handle the errors.
 export const getAllCategories = async () => {
   try {
     const { data } = await Axios.get(`/categories`);
@@ -12,6 +16,8 @@ export const getAllCategories = async () => {
   }
 };
 
+// This function will call the ZomatoAPI and fetch all the
+// cuisines for the given locationID and handle the errors.
 export const getAllCuisines = async (locationId) => {
   try {
     const { data } = await Axios.get(`/cuisines?city_id=${locationId}`);
@@ -27,54 +33,83 @@ export const getAllRestaurants = async ({
   locationId,
   categoryId,
   cuisineName,
+  start,
+  query,
 }) => {
   let data;
   try {
-    if (categoryId !== 0 && cuisineName !== "Select Cuisine")
+    //All three parameters are given
+    if (categoryId !== 0 && cuisineName !== "Select Cuisine" && query !== "")
       data = await Axios.get(
-        `/search?entity_id=${locationId}&entity_type=city&cuisines=${cuisineName}&category=${categoryId}`
+        `/search?entity_id=${locationId}&entity_type=city&cuisines=${cuisineName}&category=${categoryId}&q=${query}&start=${start}`
       );
-    else if (categoryId === 0 && cuisineName !== "Select Cuisine")
+    //Cuisine and Query is given
+    else if (
+      categoryId === 0 &&
+      cuisineName !== "Select Cuisine" &&
+      query !== ""
+    )
       data = await Axios.get(
-        `/search?entity_id=${locationId}&entity_type=city&cuisines=${cuisineName}`
+        `/search?entity_id=${locationId}&entity_type=city&cuisines=${cuisineName}&q=${query}&start=${start}`
       );
-    else if (categoryId !== 0 && cuisineName === "Select Cuisine")
+    //Category and Query is given
+    else if (
+      categoryId !== 0 &&
+      cuisineName === "Select Cuisine" &&
+      query !== ""
+    )
       data = await Axios.get(
-        `/search?entity_id=${locationId}&entity_type=city&category=${categoryId}`
+        `/search?entity_id=${locationId}&entity_type=city&category=${categoryId}&q=${query}&start=${start}`
       );
+    //Category and Cuisine is given
+    else if (
+      categoryId !== 0 &&
+      cuisineName !== "Select Cuisine" &&
+      query === ""
+    ) {
+      data = await Axios.get(
+        `/search?entity_id=${locationId}&entity_type=city&cuisines=${cuisineName}&category=${categoryId}&start=${start}`
+      );
+    }
+    //Only query given
+    else if (
+      categoryId === 0 &&
+      cuisineName === "Select Cuisine" &&
+      query !== ""
+    ) {
+      data = await Axios.get(
+        `/search?entity_id=${locationId}&entity_type=city&q=${query}&start=${start}`
+      );
+    }
+    //Only category given
+    else if (
+      categoryId !== 0 &&
+      cuisineName === "Select Cuisine" &&
+      query === ""
+    ) {
+      data = await Axios.get(
+        `/search?entity_id=${locationId}&entity_type=city&category=${categoryId}&start=${start}`
+      );
+    }
+    //Only cuisine given
+    else if (
+      categoryId !== 0 &&
+      cuisineName !== "Select Cuisine" &&
+      query !== ""
+    ) {
+      data = await Axios.get(
+        `/search?entity_id=${locationId}&entity_type=city&cuisines=${cuisineName}&start=${start}`
+      );
+    }
+    //Nothing is given
     else
       data = await Axios.get(
-        `/search?entity_id=${locationId}&entity_type=city&count=18&start=0`
+        `/search?entity_id=${locationId}&entity_type=city&start=${start}`
       );
     return data.data;
   } catch (e) {
     console.log(e);
     toast.error("Cannot fetch Location", {
-      autoClose: 2000,
-    });
-  }
-};
-
-export const searchRestaurant = async ({ locationId, restaurantName }) => {
-  try {
-    const { data } = await Axios.get(
-      `/search?entity_id=${locationId}&entity_type=city&q=${restaurantName}&count=18&start=0`
-    );
-    console.log(data);
-    return data;
-  } catch (e) {
-    toast.error("No such restaurant found", {
-      autoClose: 2000,
-    });
-  }
-};
-
-export const getRestaurant = async (restaurantId) => {
-  try {
-    const { data } = await Axios.get(`/restaurant?res_id=${restaurantId}`);
-    return data;
-  } catch (e) {
-    toast.error("Cannot fetch Restaurant", {
       autoClose: 2000,
     });
   }
